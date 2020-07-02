@@ -15,25 +15,32 @@
 /**
  * Adds a random greeting to the page.
  */
+const projectNames = [
+  'project-bullet',
+  'project-chart-race',
+  'project-anime',
+  'project-anime-data'
+]
+
 var states = {
-  imgId: 0
+  imgId: 0,
+  projectId: 0
 }
 
 function loadPage() {
   adjustBackgroundImgWidth();
+  document.getElementById('left-button').addEventListener(
+    "click", () => { projectSlide(-1); }
+  )
+  document.getElementById('right-button').addEventListener(
+    "click", () => { projectSlide(1); }
+  )
+  for(let id of projectNames){
+    document.getElementById(id).style.display = "none";
+  }
+  document.getElementById(projectNames[states.projectId]).style.display = "flex";
 }
 
-function addRandomGreeting() {
-  const greetings =
-      ['Hello world!', '¡Hola Mundo!', '你好，世界！', 'Bonjour le monde!'];
-
-  // Pick a random greeting.
-  const greeting = greetings[Math.floor(Math.random() * greetings.length)];
-
-  // Add it to the page.
-  const greetingContainer = document.getElementById('greeting-container');
-  greetingContainer.innerText = greeting;
-}
 
 function onAvatarClick() {
   const imgSrc = ['images/avatar/avatar_1.png', 'images/avatar/avatar_2.jpg'];
@@ -47,4 +54,20 @@ function adjustBackgroundImgWidth() {
   for(let img of imgs) {
     img.height = img.width;
   }
+}
+
+function hideProject(id) {
+  console.log('id', id);
+  document.getElementById(projectNames[id]).style.display = "none";
+}
+
+function showProject(id) {
+  document.getElementById(projectNames[id]).style.display = "flex";
+}
+
+function projectSlide(inc) {
+  var newId = (states.projectId + inc + projectNames.length) % projectNames.length;
+  hideProject(states.projectId);
+  showProject(newId);
+  states.projectId = newId;
 }
