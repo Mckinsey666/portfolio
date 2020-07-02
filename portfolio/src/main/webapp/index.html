@@ -7,8 +7,12 @@
     <!-- Font embeddings -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap" rel="stylesheet">
     
-    
+    <!-- icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/konpa/devicon@master/devicon.min.css">
+
     <script src="script.js"></script>
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    
   </head>
   <body onload="loadPage()">
     <div id="content">
@@ -65,8 +69,92 @@
 
       <div id="projects">
         <h2>Personal Projects</h2>
-      </div>
+        <p>
+          I create open-source projects in my free time. As for 2020 July 1<sub>st</sub>,
+          I have acquired over 3500 stars and 100+ followers on Github. Take a quick glance
+          at some of my work!
+        </p>
+        <a class="github-button" href="https://github.com/Mckinsey666" data-size="large" data-show-count="true" aria-label="Follow @Mckinsey666 on GitHub">Follow @Mckinsey666</a>
+        
+        <div id="project-bullet" class="project-item">
+          <div class="project-info">
+            <!-- Place this tag where you want the button to render. -->
+            <h3>bullet</h3>
+            <p>Interactive prompts made simple. Build a prompt like stacking blocks.</p>
+            <ul>
+              <li>2800+ stars, Github Trending Repository</li>
+              <li>61000+ downloads, 80+ forks since its creation.</li>
+              <li>An open-source Python interactive prompts library for developing 
+                fully-customizable user-friendly command-line interfaces.</li>
+              <li>Leveraged extensive curses programming to create modules that 
+                support single/multiple choice, scroll bar, passwords, and 
+                numerous styled prompts that can be easily plugged in an existing project.</li>
+              <li>Selected by MentorCruise The most exciting upcoming 
+                Python Libraries of 2019. Featured on March 2019 Python Bytes online Podcast. </li>
+            </ul>
+          </div>
+          <div class="project-snapshot">
+            <img src="images/projects/bullet-2.gif">
+            <img src="images/projects/bullet.gif">
+            <a class="github-button" href="https://github.com/Mckinsey666/bullet" data-show-count="true" aria-label="Star ntkme/github-buttons on GitHub">Star</a>
+          </div>
+        </div>
+        
+        <div id="project-chart-race" class="project-item">
+          
+          <div class="project-snapshot">
+            <img src="images/projects/chart-race.gif">
+            <img src="images/projects/chart-race-2.gif">
+            <a class="github-button" href="https://github.com/Mckinsey666/chart-race-react" data-show-count="true" aria-label="Star ntkme/github-buttons on GitHub">Star</a>
+          </div>
+          <div class="project-info">
+            <h3>chart-race-react </h3> 
+            <p>Seamless bar chart race component for React.</p>
+            <ul>
+              <li>330+ stars, 40+ forks on Github.</li>
+              <li>A React Components npm package that allows web developers to 
+                create beautiful and fully-customizable bar chart races animations 
+                for data visualization.</li>
+              <li>Built with React, babel, and webpack.</li>
+            </ul>
+          </div>
+        </div>
 
+        <div id="project-anime" class="project-item">
+          <div class="project-info">
+            <h3>Anime Generation</h3>
+            <p>Generating anime with generative adversarial networks.</p>
+            <ul>
+              <li>Implemented two kinds of Generative Adversarial Networks (GANs): 
+                Auxiliary Classifier GANs and Conditional GANs to generate realistic anime characters.</li>
+              <li>Users can manipulate the hair and eye colors of generated characters 
+                simply by modifying certain dimensions of network input.</li>
+              <li>Used multiprocessing to scrape large amounts of high-quality training images 
+                from e-commerce websites, making the model one of the best on Github 
+                quality-wise. (The dataset I gathered also received 180+ stars on Github, 
+                and was used by courses at NTUEE, and featured in multiple Kaggle competitions).</li>
+            </ul>
+          </div>
+          <div class="project-snapshot">
+            <img src="images/projects/anime-gen.png">
+            <a class="github-button" href="https://github.com/Mckinsey666/Anime-Generation" data-show-count="true" aria-label="Star ntkme/github-buttons on GitHub">Star</a>
+          </div>
+        </div>
+
+        <div id="project-anime-data" class="project-item">
+          <div class="project-snapshot">
+            <img src="images/projects/anime-dataset.jpg">
+            <a class="github-button" href="https://github.com/Mckinsey666/Anime-Face-Dataset" data-show-count="true" aria-label="Star ntkme/github-buttons on GitHub">Star</a>
+          </div>
+          <div class="project-info">
+            <h3>Anime Face Dataset</h3>
+            <p>Self curated dataset of high-quality anime faces.</p>
+          </div>
+          
+        </div>
+
+      </div>
+    
     </div>
   </body>
 </html>
