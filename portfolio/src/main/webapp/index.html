@@ -2,14 +2,71 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>My Portfolio</title>
+    <title>Brian Chao</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Font embeddings -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap" rel="stylesheet">
+    
+    
     <script src="script.js"></script>
   </head>
-  <body>
+  <body onload="loadPage()">
     <div id="content">
-      <h1>Brian Chao</h1>
-      <p>I am a junior EECS student at National Taiwan University.</p>
+      <div id="header">
+        <div id="intro">
+          <h1>Brian Chao</h1>
+          <p>I am a junior EECS student at National Taiwan University.
+            My interests span general software development (especially open source software), 
+            machine learning, image processing, and math. In my free time, I maintain several 
+            fun projects on <a href="https://github.com/Mckinsey666">Github</a>.
+          </p>
+          <div id="social">
+            <a href="https://github.com/Mckinsey666"><img src="images/social/github.svg"></a>
+            <a href="https://www.linkedin.com/in/brian-chao-85425415a/"><img src="images/social/linkedin.svg"></a>
+            <a href="https://www.facebook.com/dshsdhtgeheth.dgshsgedhegh"><img src="images/social/facebook.svg"></a>
+            <a href="https://www.instagram.com/whereisbrianchao520/"><img src="images/social/instagram.svg"></a>
+          </div>
+        </div>
+        <div id="avatar">
+          <img id="avatar-img" src="images/avatar/avatar_1.png" onclick="onAvatarClick()"></img>
+        </div>
+      </div>
+
+      <div id="background">
+        <h2>Backgrounds and Experience</h2>
+        <div id="background-timeline">
+          <div class="background-item">
+            <img class="background-item-img" src="images/background/ntu.png">
+            <div class="background-where">National Taiwan University</div>
+            <div class="background-title">B.S. in Electrical Engineering</div>
+          </div>
+          <div class="background-item">
+            <img class="background-item-img" src="images/background/wq.png">
+            <div class="background-where">WorldQuant</div>
+            <div class="background-title">Quantitative Finance Research Intern</div>
+          </div>
+          <div class="background-item">
+            <img class="background-item-img" src="images/background/ntu.png">
+            <div class="background-where">NTU @VLL Lab</div>
+            <div class="background-title">Undergraduate Researcher</div>
+          </div>
+          <div class="background-item">
+            <img class="background-item-img" src="images/background/eesa.png">
+            <div class="background-where">NTUEE Students' Association</div>
+            <div class="background-title">Director of Informa-tion Department</div>
+          </div>
+          <div class="background-item">
+            <img class="background-item-img" src="images/background/nehs.png">
+            <div class="background-where">NEHS @Hsinchu Science Park</div>
+            <div class="background-title">Class of Scientific Merits</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="projects">
+        <h2>Personal Projects</h2>
+      </div>
+
     </div>
   </body>
 </html>

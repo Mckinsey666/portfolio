@@ -15,6 +15,14 @@
 /**
  * Adds a random greeting to the page.
  */
+var states = {
+  imgId: 0
+}
+
+function loadPage() {
+  adjustBackgroundImgWidth();
+}
+
 function addRandomGreeting() {
   const greetings =
       ['Hello world!', '¡Hola Mundo!', '你好，世界！', 'Bonjour le monde!'];
@@ -25,4 +33,18 @@ function addRandomGreeting() {
   // Add it to the page.
   const greetingContainer = document.getElementById('greeting-container');
   greetingContainer.innerText = greeting;
+}
+
+function onAvatarClick() {
+  const imgSrc = ['images/avatar/avatar_1.png', 'images/avatar/avatar_2.jpg'];
+  const newId = (states.imgId + 1) % imgSrc.length;
+  states.imgId = newId;
+  document.getElementById("avatar-img").src = imgSrc[newId];
+}
+
+function adjustBackgroundImgWidth() {
+  var imgs = document.getElementsByClassName('background-item-img');
+  for(let img of imgs) {
+    img.height = img.width;
+  }
 }
