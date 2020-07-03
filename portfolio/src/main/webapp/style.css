@@ -1,14 +1,50 @@
+body {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  margin: 0;
+  font-family: 'Roboto';
+}
+
 a {
   text-decoration: none;
 }
 
+/* 
+  Navigation 
+*/
+
+#navigation {
+  width: 15%;
+  height: 100%;
+  position: fixed;
+  background-color: rgba(240, 240, 240, 0.8);
+  padding-top: 10%;
+}
+
+.nav-item {
+  width: 100%;
+  padding: 20px 0px;
+  margin: 20px auto;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 100;
+}
+
+.nav-item:hover {
+  background-color: rgb(200, 200, 200);
+  color: white;
+  cursor: pointer;
+}
+
 #content {
   margin-top: 5%;
-  margin-left: auto;
+  margin-left: 27.5%;
   margin-right: auto;
   width: 60%;
-  font-family: 'Roboto';
 }
+
+
 
 /*
   Introduction
@@ -72,6 +108,7 @@ a {
 }
 
 #background-timeline {
+  margin-top: 50px;
   width: 100%;
   display: flex;
 }
@@ -114,12 +151,12 @@ a {
 */
 
 #projects {
-  margin-top: 50px;
+  margin-top: 100px;
   width: 100%;
 }
 
 .project-item {
-  margin-top: 20px;
+  margin-top: 50px;
   width: 100%;
   height: 400px;
   display: flex;
@@ -144,6 +181,10 @@ a {
   width: 100%;
   margin-top: 10px;
   margin-bottom: 10px;
+}
+
+.rl-img {
+  height: 45%;
 }
 
 .tech-logo {

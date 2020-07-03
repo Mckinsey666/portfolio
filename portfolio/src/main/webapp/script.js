@@ -19,11 +19,18 @@ const projectNames = [
   'project-bullet',
   'project-chart-race',
   'project-anime',
-  'project-anime-data'
+  'project-anime-data',
+  'project-vocab',
+  'project-rl'
 ]
 
+const imgSrc = [
+  'images/avatar/avatar_1.png', 
+  'images/avatar/avatar_2.jpg'
+];
+
 var states = {
-  imgId: 0,
+  imgId: 1,
   projectId: 0
 }
 
@@ -39,11 +46,12 @@ function loadPage() {
     document.getElementById(id).style.display = "none";
   }
   document.getElementById(projectNames[states.projectId]).style.display = "flex";
+  document.getElementById("avatar-img").src = imgSrc[states.imgId]; 
+
 }
 
 
 function onAvatarClick() {
-  const imgSrc = ['images/avatar/avatar_1.png', 'images/avatar/avatar_2.jpg'];
   const newId = (states.imgId + 1) % imgSrc.length;
   states.imgId = newId;
   document.getElementById("avatar-img").src = imgSrc[newId];
