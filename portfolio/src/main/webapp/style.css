@@ -34,7 +34,15 @@ a {
 .nav-item:hover {
   background-color: rgb(200, 200, 200);
   color: white;
-  cursor: pointer;
+}
+
+.nav-item a {
+  text-decoration: none;
+  color: black;
+}
+
+.nav-item a:hover {
+  color: white;
 }
 
 #content {
