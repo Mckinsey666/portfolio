@@ -1,20 +1,3 @@
-// Copyright 2019 Google LLC
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//     https://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-
-/**
- * Adds a random greeting to the page.
- */
 const projectNames = [
   'project-bullet',
   'project-chart-race',
@@ -24,6 +7,14 @@ const projectNames = [
   'project-rl'
 ]
 
+const backgroundNames = {
+  "ntu": "background-ntu",
+  "wq": "background-wq",
+  "vll": "background-vll",
+  "eesa": "background-eesa",
+  "nehs": "background-nehs"
+}
+
 const imgSrc = [
   'images/avatar/avatar_1.png', 
   'images/avatar/avatar_2.jpg'
@@ -31,7 +22,8 @@ const imgSrc = [
 
 var states = {
   imgId: 1,
-  projectId: 0
+  projectId: 0,
+  backgroundId: 'ntu'
 }
 
 function loadPage() {
@@ -47,6 +39,15 @@ function loadPage() {
   }
   document.getElementById(projectNames[states.projectId]).style.display = "flex";
   document.getElementById("avatar-img").src = imgSrc[states.imgId]; 
+
+  for(let id in backgroundNames){
+    console.log(document.getElementById(id));
+    document.getElementById(id).addEventListener('mouseenter', () => {
+      document.getElementById(backgroundNames[states.backgroundId]).style.display = "none";
+      document.getElementById(backgroundNames[id]).style.display = 'block';
+      states.backgroundId = id;
+    })
+  }
 
 }
 

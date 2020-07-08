@@ -19,13 +19,13 @@ a {
   height: 100%;
   position: fixed;
   background-color: rgba(240, 240, 240, 0.8);
-  padding-top: 10%;
+  padding-top: calc(calc(100vh - 480px)/2);
 }
 
 .nav-item {
   width: 100%;
   padding: 20px 0px;
-  margin: 20px auto;
+  max-height: 40px;
   text-align: center;
   font-size: 1.5rem;
   font-weight: 100;
@@ -152,6 +152,12 @@ a {
 
 .background-info {
   margin-top: 10px;
+  display: none;
+}
+
+.background-time {
+  margin-top: -10px;
+  color: rgb(148, 148, 148);
 }
 
 /*
