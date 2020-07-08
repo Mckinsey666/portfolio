@@ -111,7 +111,7 @@ a {
 */
 
 #background {
-  margin-top: 50px;
+  margin-top: 100px;
   width: 100%;
 }
 
@@ -135,6 +135,7 @@ a {
 
 .background-item img:hover {
   cursor: pointer;
+  box-shadow:  0px 0px 20px 5px rgb(225, 225, 225);
 }
 
 .background-where {
@@ -153,6 +154,7 @@ a {
 .background-info {
   margin-top: 10px;
   display: none;
+  line-height: 1.5rem;
 }
 
 .background-time {

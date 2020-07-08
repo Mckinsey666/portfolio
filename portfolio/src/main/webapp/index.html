@@ -53,7 +53,7 @@
           </div>
         </div>
         <div id="avatar">
-          <img id="avatar-img" src="images/avatar/avatar_1.png" onclick="onAvatarClick()"></img>
+          <img id="avatar-img" src="images/avatar/avatar_2.jpg" onclick="onAvatarClick()"></img>
         </div>
       </div>
 
@@ -61,28 +61,28 @@
         <h2>Backgrounds and Experience</h2>
         <p>Hover on the logos to see more information.</p>
         <div id="background-timeline">
-          <div class="background-item" id="ntu">
-            <img class="background-item-img" src="images/background/ntu.png">
+          <div class="background-item">
+            <img id="ntu" class="background-item-img" src="images/background/ntu.png">
             <div class="background-where">National Taiwan University</div>
             <div class="background-title">B.S. in Electrical Engineering</div>
           </div>
-          <div class="background-item" id="wq">
-            <img class="background-item-img" src="images/background/wq.png">
+          <div class="background-item">
+            <img id="wq" class="background-item-img" src="images/background/wq.png">
             <div class="background-where">WorldQuant</div>
             <div class="background-title">Quantitative Finance Research Intern</div>
           </div>
-          <div class="background-item" id="vll">
-            <img class="background-item-img" src="images/background/ntu.png">
+          <div class="background-item">
+            <img id="vll" class="background-item-img" src="images/background/ntu.png">
             <div class="background-where">NTU @VLL Lab</div>
             <div class="background-title">Undergraduate Researcher</div>
           </div>
-          <div class="background-item" id="eesa">
-            <img class="background-item-img" src="images/background/eesa.png">
+          <div class="background-item" >
+            <img id="eesa" class="background-item-img" src="images/background/eesa.png">
             <div class="background-where">NTUEE Students' Association</div>
             <div class="background-title">Director of Informa-tion Department</div>
           </div>
-          <div class="background-item" id="nehs">
-            <img class="background-item-img" src="images/background/nehs.png">
+          <div class="background-item" >
+            <img id="nehs" class="background-item-img" src="images/background/nehs.png">
             <div class="background-where">NEHS @Hsinchu Science Park</div>
             <div class="background-title">Class of Scientific Merits</div>
           </div>
@@ -90,18 +90,50 @@
         <div class="background-info" id="background-ntu">
           <h4>B.S. in Electrical Engineering</h4>
           <h5 class="background-time">2017/9~Present</h5>
+          <ul>
+            <li>GPA : 4.24 / 4.3. Major GPA : 4.26 / 4.3</li>
+            <li>I am a 3rd year Electrical Engineering student at NTU. In 2019 Fall, I applied for 
+              double major in Computer Science.</li>
+            <li>I am also a <a href="https://oia.ntu.edu.tw/international-guests/student-ambassador">
+            Student Ambassador</a> at NTU, under the Office of International Affairs.</li>
+            <li>TA Experience
+              <ol>
+                <li>Machine Learning (2020 Spring)</li>
+                <li>Signals and Systems (2020 Spring)</li>
+              </ol>
+
+            </li>
+            <li>Dean's List Awards * 4</li>
+            <li>See my selected courses <a href="">here</a>.</li>
+          </ul>
         </div>
         <div class="background-info" id="background-wq">
           <h4>Quantitative Finance Research Intern</h4>
           <h5 class="background-time">2019/1~2019/2</h5>
+          <ul>
+            <li>Designed high-performance trading algorithms (alphas) using 
+              price-volume, fundamental, and news data.</li>
+            <li>Won the best price-volume alpha award (awarded to the intern who 
+              designed the most creative and rewarding alpha based on price-volume data).</li>
+          </ul>
         </div>
         <div class="background-info" id="background-vll">
           <h4>Undergraduate Researcher</h4>
           <h5 class="background-time">2018/7~Present</h5>
+          <p>My Research interests include unsupervised representation learning, self-supervised learning, and Generative Adversarial Networks (GAN) applications.</p>
+          <ul><b>Image Rectification</b>
+            <li>First-authored paper accepted for ICASSP 2020.</li>
+            <li>Designed an unsupervised framework with Generative Adversarial 
+              Networks backbone to predict image flow maps for fisheye image rectification that greatly outperforms current unpaired image translation methods</li>
+          </ul>
         </div>
         <div class="background-info" id="background-eesa">
           <h4>Director of Information Department</h4>
           <h5 class="background-time">2019/8~2020/6</h5>
+          <li>Lead a team of 30+ students to maintain servers for the Electrical Engineering Department. 
+            Collaborated with different departments in the Student’s Association to work on a variety of 
+            different projects such as browser games and websites that support campus-wide marketing campaigns.</li>
+          <li>Organized weekly lectures and workshops on web development and programming for underclassmen.</li>
         </div>
         <div class="background-info" id="background-nehs">
           
@@ -111,7 +143,8 @@
       <div id="projects">
         <h2>Personal Projects</h2>
         <p>
-          I create open-source projects in my free time. As for 2020 July 1<sub>st</sub>,
+          I create open-source projects in my free time. I write mostly Python and Javascript.
+          As for 2020 July 1<sub>st</sub>,
           I have acquired over 3500 stars and 100+ followers on Github. Have a quick glance
           at some of my work!
         </p>
@@ -217,6 +250,26 @@
           <div class="project-snapshot">
             <img class="rl-img" src="images/projects/breakout.gif">
             <img class="rl-img" src="images/projects/pong.gif">
+          </div>
+        </div>
+
+        <div id="project-fegan" class="project-item">
+          <div class="project-info">
+            <h3>Image Rectification</h3>
+            <p>Fisheye image rectification with deep learning.</p>
+            <ul>
+              <li><a href="https://github.com/ByronHsu/FEGAN">Our ICASSP 2020 Paper</a></li>
+              <li><a href="https://github.com/bchao1/awesome-image-rectification">A curated list of image rectification papers.</a></li>
+            </ul>
+            <p>
+              We propose a novel GAN-based method to rectify fish-eye images by predicting
+              distorted flow maps. Under an unpaired setting, our model were able to out perform
+              naive unpaired image translation methods to create better quality rectified images.
+            </p>
+          </div>
+          <div class="project-snapshot">
+            <img src="images/projects/fegan.png">
+            <a class="github-button" href="https://github.com/bchao1/awesome-image-rectification" data-show-count="true" aria-label="Star ntkme/github-buttons on GitHub">Star</a>
           </div>
         </div>
 

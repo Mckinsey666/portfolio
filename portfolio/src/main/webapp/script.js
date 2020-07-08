@@ -4,7 +4,8 @@ const projectNames = [
   'project-anime',
   'project-anime-data',
   'project-vocab',
-  'project-rl'
+  'project-rl',
+  'project-fegan'
 ]
 
 const backgroundNames = {
