@@ -20,13 +20,27 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
+  private List<String> urls;
+  @Override 
+  public void init() {
+	  urls = new ArrayList<>();
+	  urls.add("https://www.youtube.com/embed/XpqqjU7u5Yc");
+	  urls.add("https://www.youtube.com/embed/WPi7LrQ1rNg");
+	  urls.add("https://www.youtube.com/embed/EqPtz5qN7HM");
+  }
+
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    response.setContentType("text/html;");
-    response.getWriter().println("<h1>Hello Brian!</h1>");
+    String url = urls.get((int) (Math.random() * urls.size()));
+
+	response.setContentType("text/html;");
+    response.getWriter().println(url);
   }
 }
