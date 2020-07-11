@@ -14,12 +14,16 @@
 
 package com.google.sps.servlets;
 import com.google.gson.Gson;
+import com.google.appengine.api.datastore.DatastoreService;
+import com.google.appengine.api.datastore.DatastoreServiceFactory;
+import com.google.appengine.api.datastore.Entity;
 
 import java.io.IOException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,12 +34,12 @@ import java.util.List;
 public class DataServlet extends HttpServlet {
 
   private List<String> urls;
-  private List<String> comments;
+  //private List<String> comments;
 
   @Override 
   public void init() {
 	  this.urls = new ArrayList<>();
-	  this.comments = new ArrayList<>();
+	  //this.comments = new ArrayList<>();
 	  this.urls.add("https://www.youtube.com/embed/XpqqjU7u5Yc");
 	  this.urls.add("https://www.youtube.com/embed/WPi7LrQ1rNg");
 	  this.urls.add("https://www.youtube.com/embed/EqPtz5qN7HM");
@@ -52,11 +56,15 @@ public class DataServlet extends HttpServlet {
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     String comment = request.getParameter("comment");
-	this.comments.add(comment);
+	long timestamp = System.currentTimeMillis();
+
+	Entity commentEntity = new Entity("Comment");
+    commentEntity.setProperty("content", comment);
+    commentEntity.setProperty("timestamp", timestamp);
+	DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+    datastore.put(commentEntity);
+
 	response.sendRedirect("blog/index.html");
-	for(String s: this.comments){
-		System.out.println(s);
-	}
   }
 
   private String convertUrlsToJson(List<String>urls) {
