@@ -30,9 +30,12 @@ import java.util.List;
 public class DataServlet extends HttpServlet {
 
   private List<String> urls;
+  private List<String> comments;
+
   @Override 
   public void init() {
 	  this.urls = new ArrayList<>();
+	  this.comments = new ArrayList<>();
 	  this.urls.add("https://www.youtube.com/embed/XpqqjU7u5Yc");
 	  this.urls.add("https://www.youtube.com/embed/WPi7LrQ1rNg");
 	  this.urls.add("https://www.youtube.com/embed/EqPtz5qN7HM");
@@ -44,6 +47,16 @@ public class DataServlet extends HttpServlet {
 	String json = convertUrlsToJson(this.urls);
 	response.setContentType("application/json;");
     response.getWriter().println(json);
+  }
+
+  @Override
+  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    String comment = request.getParameter("comment");
+	this.comments.add(comment);
+	response.sendRedirect("blog/index.html");
+	for(String s: this.comments){
+		System.out.println(s);
+	}
   }
 
   private String convertUrlsToJson(List<String>urls) {
