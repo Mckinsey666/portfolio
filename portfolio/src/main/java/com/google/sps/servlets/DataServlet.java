@@ -13,6 +13,7 @@
 // limitations under the License.
 
 package com.google.sps.servlets;
+import com.google.gson.Gson;
 
 import java.io.IOException;
 import javax.servlet.annotation.WebServlet;
@@ -23,6 +24,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.List;
 
+
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
@@ -30,17 +32,23 @@ public class DataServlet extends HttpServlet {
   private List<String> urls;
   @Override 
   public void init() {
-	  urls = new ArrayList<>();
-	  urls.add("https://www.youtube.com/embed/XpqqjU7u5Yc");
-	  urls.add("https://www.youtube.com/embed/WPi7LrQ1rNg");
-	  urls.add("https://www.youtube.com/embed/EqPtz5qN7HM");
+	  this.urls = new ArrayList<>();
+	  this.urls.add("https://www.youtube.com/embed/XpqqjU7u5Yc");
+	  this.urls.add("https://www.youtube.com/embed/WPi7LrQ1rNg");
+	  this.urls.add("https://www.youtube.com/embed/EqPtz5qN7HM");
   }
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    String url = urls.get((int) (Math.random() * urls.size()));
+    //String url = urls.get((int) (Math.random() * urls.size()));
+	String json = convertUrlsToJson(this.urls);
+	response.setContentType("application/json;");
+    response.getWriter().println(json);
+  }
 
-	response.setContentType("text/html;");
-    response.getWriter().println(url);
+  private String convertUrlsToJson(List<String>urls) {
+    Gson gson = new Gson();
+    String json = gson.toJson(urls);
+    return json;
   }
 }
