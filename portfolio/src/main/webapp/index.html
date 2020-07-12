@@ -2,17 +2,291 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>My Portfolio</title>
+    <title>Brian Chao</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Font embeddings -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap" rel="stylesheet">
+    
+    <!-- icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/konpa/devicon@master/devicon.min.css">
+
     <script src="script.js"></script>
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    
   </head>
-  <body>
+  <body onload="loadPage()">
+    <div id="navigation">
+      <div class="nav-item">
+        <a href="#header">Introduction</a>
+      </div>
+      <div class="nav-item">
+        <a href="#background">Background</a>
+      </div>
+      <div class="nav-item">
+        <a href="#projects">Personal Projects</a>
+        
+      </div>
+      <div class="nav-item">
+        <a href="blog/index.html">Blog</a>
+      </div>
+      <div class="nav-item">
+        Skills
+      </div>
+      <div class="nav-item">
+        Contact
+      </div>
+    </div>
     <div id="content">
-      <h1>My Portfolio</h1>
-      <p>This is my portfolio.</p>
-      <p>Click here to get a random message:</p>
-      <button onclick="addRandomGreeting()">Hello</button>
-      <div id="greeting-container"></div>
+      <div id="header">
+        <div id="intro">
+          <h1>Brian Chao</h1>
+          <p>I am a junior EECS student at National Taiwan University.
+            My interests span general software development (especially open source software), 
+            machine learning, image processing, and math. In my free time, I maintain several 
+            fun projects on <a href="https://github.com/Mckinsey666">Github</a>.
+          </p>
+          <div id="social">
+            <a href="https://github.com/Mckinsey666"><img src="images/social/github.svg"></a>
+            <a href="https://www.linkedin.com/in/brian-chao-85425415a/"><img src="images/social/linkedin.svg"></a>
+            <a href="https://www.facebook.com/dshsdhtgeheth.dgshsgedhegh"><img src="images/social/facebook.svg"></a>
+            <a href="https://www.instagram.com/whereisbrianchao520/"><img src="images/social/instagram.svg"></a>
+          </div>
+        </div>
+        <div id="avatar">
+          <img id="avatar-img" src="images/avatar/avatar_2.jpg" onclick="onAvatarClick()"></img>
+        </div>
+      </div>
+
+      <div id="background">
+        <h2>Backgrounds and Experience</h2>
+        <p>Hover on the logos to see more information.</p>
+        <div id="background-timeline">
+          <div class="background-item">
+            <img id="ntu" class="background-item-img" src="images/background/ntu.png">
+            <div class="background-where">National Taiwan University</div>
+            <div class="background-title">B.S. in Electrical Engineering</div>
+          </div>
+          <div class="background-item">
+            <img id="wq" class="background-item-img" src="images/background/wq.png">
+            <div class="background-where">WorldQuant</div>
+            <div class="background-title">Quantitative Finance Research Intern</div>
+          </div>
+          <div class="background-item">
+            <img id="vll" class="background-item-img" src="images/background/ntu.png">
+            <div class="background-where">NTU @VLL Lab</div>
+            <div class="background-title">Undergraduate Researcher</div>
+          </div>
+          <div class="background-item" >
+            <img id="eesa" class="background-item-img" src="images/background/eesa.png">
+            <div class="background-where">NTUEE Students' Association</div>
+            <div class="background-title">Director of Informa-tion Department</div>
+          </div>
+          <div class="background-item" >
+            <img id="nehs" class="background-item-img" src="images/background/nehs.png">
+            <div class="background-where">NEHS @Hsinchu Science Park</div>
+            <div class="background-title">Class of Scientific Merits</div>
+          </div>
+        </div>
+        <div class="background-info" id="background-ntu">
+          <h4>B.S. in Electrical Engineering</h4>
+          <h5 class="background-time">2017/9~Present</h5>
+          <ul>
+            <li>GPA : 4.24 / 4.3. Major GPA : 4.26 / 4.3</li>
+            <li>I am a 3rd year Electrical Engineering student at NTU. In 2019 Fall, I applied for 
+              double major in Computer Science.</li>
+            <li>I am also a <a href="https://oia.ntu.edu.tw/international-guests/student-ambassador">
+            Student Ambassador</a> at NTU, under the Office of International Affairs.</li>
+            <li>TA Experience
+              <ol>
+                <li>Machine Learning (2020 Spring)</li>
+                <li>Signals and Systems (2020 Spring)</li>
+              </ol>
+
+            </li>
+            <li>Dean's List Awards * 4</li>
+            <li>See my selected courses <a href="">here</a>.</li>
+          </ul>
+        </div>
+        <div class="background-info" id="background-wq">
+          <h4>Quantitative Finance Research Intern</h4>
+          <h5 class="background-time">2019/1~2019/2</h5>
+          <ul>
+            <li>Designed high-performance trading algorithms (alphas) using 
+              price-volume, fundamental, and news data.</li>
+            <li>Won the best price-volume alpha award (awarded to the intern who 
+              designed the most creative and rewarding alpha based on price-volume data).</li>
+          </ul>
+        </div>
+        <div class="background-info" id="background-vll">
+          <h4>Undergraduate Researcher</h4>
+          <h5 class="background-time">2018/7~Present</h5>
+          <p>My Research interests include unsupervised representation learning, self-supervised learning, and Generative Adversarial Networks (GAN) applications.</p>
+          <ul><b>Image Rectification</b>
+            <li>First-authored paper accepted for ICASSP 2020.</li>
+            <li>Designed an unsupervised framework with Generative Adversarial 
+              Networks backbone to predict image flow maps for fisheye image rectification that greatly outperforms current unpaired image translation methods</li>
+          </ul>
+        </div>
+        <div class="background-info" id="background-eesa">
+          <h4>Director of Information Department</h4>
+          <h5 class="background-time">2019/8~2020/6</h5>
+          <li>Lead a team of 30+ students to maintain servers for the Electrical Engineering Department. 
+            Collaborated with different departments in the Student’s Association to work on a variety of 
+            different projects such as browser games and websites that support campus-wide marketing campaigns.</li>
+          <li>Organized weekly lectures and workshops on web development and programming for underclassmen.</li>
+        </div>
+        <div class="background-info" id="background-nehs">
+          
+        </div>
+      </div>
+
+      <div id="projects">
+        <h2>Personal Projects</h2>
+        <p>
+          I create open-source projects in my free time. I write mostly Python and Javascript.
+          As for 2020 July 1<sub>st</sub>,
+          I have acquired over 3500 stars and 100+ followers on Github. Have a quick glance
+          at some of my work!
+        </p>
+        <div style="width: 100%; text-align: center;">
+          <a class="github-button" href="https://github.com/bchao1/" data-size="large" data-show-count="true" aria-label="Follow @bchao1 on GitHub">Follow @bchao1</a>
+        </div>
+
+        <div id="project-bullet" class="project-item">
+          <div class="project-info">
+            <!-- Place this tag where you want the button to render. -->
+            <h3>bullet</h3>
+            <p>Interactive prompts made simple. Build a prompt like stacking blocks.</p>
+            <ul>
+              <li>2800+ stars, Github Trending Repository</li>
+              <li>61000+ downloads, 80+ forks since its creation.</li>
+              <li>An open-source Python interactive prompts library for developing 
+                fully-customizable user-friendly command-line interfaces.</li>
+              <li>Leveraged extensive curses programming to create modules that 
+                support single/multiple choice, scroll bar, passwords, and 
+                numerous styled prompts that can be easily plugged in an existing project.</li>
+              <li>Selected by MentorCruise The most exciting upcoming 
+                Python Libraries of 2019. Featured on March 2019 Python Bytes online Podcast. </li>
+            </ul>
+          </div>
+          <div class="project-snapshot">
+            <img src="images/projects/bullet-2.gif">
+            <img src="images/projects/bullet.gif">
+            <a class="github-button" href="https://github.com/bchao1/bullet" data-show-count="true" aria-label="Star ntkme/github-buttons on GitHub">Star</a>
+          </div>
+        </div>
+        
+        <div id="project-chart-race" class="project-item">
+          <div class="project-info">
+            <h3>chart-race-react </h3> 
+            <p>Seamless bar chart race component for React.</p>
+            <ul>
+              <li>330+ stars, 40+ forks on Github.</li>
+              <li>A React Components npm package that allows web developers to 
+                create beautiful and fully-customizable bar chart races animations 
+                for data visualization.</li>
+              <li>Built with React, babel, and webpack.</li>
+            </ul>
+          </div>
+          <div class="project-snapshot">
+            <img src="images/projects/chart-race.gif">
+            <img src="images/projects/chart-race-2.gif">
+            <a class="github-button" href="https://github.com/bchao1/chart-race-react" data-show-count="true" aria-label="Star ntkme/github-buttons on GitHub">Star</a>
+          </div>
+        </div>
+
+        <div id="project-anime" class="project-item">
+          <div class="project-info">
+            <h3>Anime Generation</h3>
+            <p>Generating anime with generative adversarial networks.</p>
+            <ul>
+              <li>Implemented two kinds of Generative Adversarial Networks (GANs): 
+                Auxiliary Classifier GANs and Conditional GANs to generate realistic anime characters.</li>
+              <li>Users can manipulate the hair and eye colors of generated characters 
+                simply by modifying certain dimensions of network input.</li>
+              <li>Used multiprocessing to scrape large amounts of high-quality training images 
+                from e-commerce websites, making the model one of the best on Github 
+                quality-wise. (The dataset I gathered also received 180+ stars on Github, 
+                and was used by courses at NTUEE, and featured in multiple Kaggle competitions).</li>
+            </ul>
+          </div>
+          <div class="project-snapshot">
+            <img src="images/projects/anime-gen.png">
+            <a class="github-button" href="https://github.com/bchao1/Anime-Generation" data-show-count="true" aria-label="Star ntkme/github-buttons on GitHub">Star</a>
+          </div>
+        </div>
+
+        <div id="project-anime-data" class="project-item">
+          <div class="project-info">
+            <h3>Anime Face Dataset</h3>
+            <p>Self curated dataset of high-quality anime faces.</p>
+          </div>
+          <div class="project-snapshot">
+            <img src="images/projects/anime-dataset.jpg">
+            <a class="github-button" href="https://github.com/bchao1/Anime-Face-Dataset" data-show-count="true" aria-label="Star ntkme/github-buttons on GitHub">Star</a>
+          </div>
+        </div>
+
+        <div id="project-vocab" class="project-item">
+          <div class="project-info">
+            <h3>vocab</h3>
+            <p>A lightweight online dictionary integration to the command line.</p>
+          </div>
+          <div class="project-snapshot">
+            <img src="images/projects/vocab-2.gif">
+            <a class="github-button" href="https://github.com/bchao1/vocabs" data-show-count="true" aria-label="Star ntkme/github-buttons on GitHub">Star</a>
+          </div>
+        </div>
+
+        <div id="project-rl" class="project-item">
+          <div class="project-info">
+            <h3>Reinforcement Learning Atari</h3>
+            <p>Playing Classic Atari games with RL.</p>
+            <ul>
+              <li><a href="https://github.com/bchao1/Pong-Policy-Gradient">Play Pong with Policy Gradient.</a></li>
+              <li><a href="https://github.com/bchao1/Breakout-Deep-Q-Learning">Play Breakout with Deep Q Learning.</a></li>
+            </ul>
+          </div>
+          <div class="project-snapshot">
+            <img class="rl-img" src="images/projects/breakout.gif">
+            <img class="rl-img" src="images/projects/pong.gif">
+          </div>
+        </div>
+
+        <div id="project-fegan" class="project-item">
+          <div class="project-info">
+            <h3>Image Rectification</h3>
+            <p>Fisheye image rectification with deep learning.</p>
+            <ul>
+              <li><a href="https://github.com/ByronHsu/FEGAN">Our ICASSP 2020 Paper</a></li>
+              <li><a href="https://github.com/bchao1/awesome-image-rectification">A curated list of image rectification papers.</a></li>
+            </ul>
+            <p>
+              We propose a novel GAN-based method to rectify fish-eye images by predicting
+              distorted flow maps. Under an unpaired setting, our model were able to out perform
+              naive unpaired image translation methods to create better quality rectified images.
+            </p>
+          </div>
+          <div class="project-snapshot">
+            <img src="images/projects/fegan.png">
+            <a class="github-button" href="https://github.com/bchao1/awesome-image-rectification" data-show-count="true" aria-label="Star ntkme/github-buttons on GitHub">Star</a>
+          </div>
+        </div>
+
+        <div id="carousel">
+          <div id="left-button" class="arrow-button">
+            <img src="images/icons/chevrons-left.svg">
+          </div>
+          <div id="right-button" class="arrow-button">
+            <img src="images/icons/chevrons-right.svg">
+          </div>
+        </div>
+
+      </div>
+    
+      <div id="footer">
+
+      </div>
     </div>
   </body>
 </html>

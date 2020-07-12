@@ -1,28 +1,83 @@
-// Copyright 2019 Google LLC
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//     https://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
+const projectNames = [
+  'project-bullet',
+  'project-chart-race',
+  'project-anime',
+  'project-anime-data',
+  'project-vocab',
+  'project-rl',
+  'project-fegan'
+]
 
-/**
- * Adds a random greeting to the page.
- */
-function addRandomGreeting() {
-  const greetings =
-      ['Hello world!', '¡Hola Mundo!', '你好，世界！', 'Bonjour le monde!'];
+const backgroundNames = {
+  "ntu": "background-ntu",
+  "wq": "background-wq",
+  "vll": "background-vll",
+  "eesa": "background-eesa",
+  "nehs": "background-nehs"
+}
 
-  // Pick a random greeting.
-  const greeting = greetings[Math.floor(Math.random() * greetings.length)];
+const imgSrc = [
+  'images/avatar/avatar_1.png', 
+  'images/avatar/avatar_2.jpg'
+];
 
-  // Add it to the page.
-  const greetingContainer = document.getElementById('greeting-container');
-  greetingContainer.innerText = greeting;
+var states = {
+  imgId: 1,
+  projectId: 0,
+  backgroundId: 'ntu'
+}
+
+function loadPage() {
+  adjustBackgroundImgWidth();
+  document.getElementById('left-button').addEventListener(
+    "click", () => { projectSlide(-1); }
+  )
+  document.getElementById('right-button').addEventListener(
+    "click", () => { projectSlide(1); }
+  )
+  for(let id of projectNames){
+    document.getElementById(id).style.display = "none";
+  }
+  document.getElementById(projectNames[states.projectId]).style.display = "flex";
+  document.getElementById("avatar-img").src = imgSrc[states.imgId]; 
+
+  for(let id in backgroundNames){
+    console.log(document.getElementById(id));
+    document.getElementById(id).addEventListener('mouseenter', () => {
+      document.getElementById(backgroundNames[states.backgroundId]).style.display = "none";
+      document.getElementById(backgroundNames[id]).style.display = 'block';
+      states.backgroundId = id;
+    })
+  }
+
+}
+
+
+function onAvatarClick() {
+  const newId = (states.imgId + 1) % imgSrc.length;
+  states.imgId = newId;
+  document.getElementById("avatar-img").src = imgSrc[newId];
+}
+
+function adjustBackgroundImgWidth() {
+  var imgs = document.getElementsByClassName('background-item-img');
+  for(let img of imgs) {
+    img.height = img.width;
+  }
+}
+
+function hideProject(id) {
+  console.log('id', id);
+  document.getElementById(projectNames[id]).style.display = "none";
+}
+
+function showProject(id) {
+  document.getElementById(projectNames[id]).style.display = "flex";
+}
+
+function projectSlide(inc) {
+  var newId = (states.projectId + inc + projectNames.length) % projectNames.length;
+  hideProject(states.projectId);
+  showProject(newId);
+  states.projectId = newId;
 }
