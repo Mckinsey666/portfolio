@@ -17,6 +17,13 @@ import com.google.gson.Gson;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.Query;
+import com.google.appengine.api.datastore.PreparedQuery;
+import com.google.appengine.api.datastore.Query.Filter;
+import com.google.appengine.api.datastore.Query.FilterOperator;
+import com.google.appengine.api.datastore.Query.FilterPredicate;
+import com.google.appengine.api.datastore.Query.SortDirection;
+
 
 import java.io.IOException;
 import javax.servlet.annotation.WebServlet;
@@ -40,15 +47,24 @@ public class CommentsDataServlet extends HttpServlet {
   public void init() {
 
   }
+  
+  @Override
+  public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    String langCode = request.getParameter("langCode");
+    String musicId = request.getParameter("musicId");
+    
+    String json = convertListMapToJson(getCommentsByMusicId(musicId, langCode));
+
+    response.setContentType("application/json;");
+    response.getWriter().println(json);
+  }
 
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     String comment = request.getParameter("comment");
-    String musicId = request.getParameter("music-id");
+    String musicId = request.getParameter("musicId");
 	long timestamp = System.currentTimeMillis();
     
-    System.out.println(musicId);
-    System.out.println(comment);
 
 	Entity commentEntity = new Entity("Comment");
     commentEntity.setProperty("content", comment);
@@ -61,4 +77,30 @@ public class CommentsDataServlet extends HttpServlet {
 	response.sendRedirect("blog/index.html");
   }
 
+  private List<Map<String, String> > getCommentsByMusicId(String musicId, String langCode) {
+    Filter propertyFilter = new FilterPredicate("musicId", FilterOperator.EQUAL, musicId);
+    Query q = new Query("Comment").setFilter(propertyFilter).addSort("timestamp", SortDirection.DESCENDING);
+    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+    PreparedQuery pq = datastore.prepare(q);
+
+    List<Map<String, String> > comments = new ArrayList<>();
+    for (Entity result : pq.asIterable()) {
+        String content = (String)result.getProperty("content");
+        String id = (String)result.getProperty("musicId");
+        Long timestamp = (Long)result.getProperty("timestamp");
+
+        System.out.println(id + " " + timestamp + " " + content);
+        Map<String, String> commentsData = new HashMap<String, String>();
+        commentsData.put("content", content);
+        commentsData.put("timestamp", String.valueOf(timestamp));
+        comments.add(commentsData);
+    }
+    return comments;
+  }
+
+  private String convertListMapToJson(List<Map<String, String> >data){
+      Gson gson = new Gson();
+      String json = gson.toJson(data);
+      return json;
+  }
 }

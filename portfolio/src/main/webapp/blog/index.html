@@ -9,6 +9,17 @@
     </head>
     <body>
         <h1>Brian Chao's blog</h1>
+        <div>
+            <span>Please select a language</span>
+            <select id="lang" name="lang" onchange="onSelectLang(this.selectedIndex)">
+                <option value="en" selected>English</option>
+                <option value="zh">Chinese</option>
+                <option value="ja">Japanese</option>
+                <option value="fr">French</option>
+                <option value="de">Deutsch</option>
+                <option value="es">Spanish</option>
+            </select>
+        </div>
         <h2>Some Music </h2>
             <div>
                 <iframe id="music-embed" width="420" height="315" src=""></iframe>
@@ -22,10 +33,11 @@
             <div>
                 <form action="/comments" method="POST">
                     <input type="text" placeholder="Enter comment" id="comment" name="comment">
-                    <input type="hidden" id="music-id" name="music-id" />
-                <input type="submit"/>
+                    <input type="hidden" id="musicId" name="musicId" />
+                    <input type="submit"/>
                 </form>
             </div>
+
             <div id="comments">
 
             </div>
