@@ -27,6 +27,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
@@ -47,8 +49,8 @@ public class DataServlet extends HttpServlet {
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    //String url = urls.get((int) (Math.random() * urls.size()));
-	String json = convertUrlsToJson(this.urls);
+    Map<String, String> musicData = getRandomMusicData();
+    String json = convertMusicDataToJson(musicData);
 	response.setContentType("application/json;");
     response.getWriter().println(json);
   }
@@ -67,9 +69,18 @@ public class DataServlet extends HttpServlet {
 	response.sendRedirect("blog/index.html");
   }
 
-  private String convertUrlsToJson(List<String>urls) {
+  private Map<String, String> getRandomMusicData() {
+    int idx = (int)(Math.random() * this.urls.size());
+    String url = this.urls.get(idx);
+    Map<String, String> musicData = new HashMap<String, String>();
+    musicData.put("id", String.valueOf(idx));
+    musicData.put("url", url);
+    return musicData;
+  }
+
+  private String convertMusicDataToJson(Map<String, String>data) {
     Gson gson = new Gson();
-    String json = gson.toJson(urls);
+    String json = gson.toJson(data);
     return json;
   }
 }
