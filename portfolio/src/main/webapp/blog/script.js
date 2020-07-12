@@ -1,13 +1,14 @@
 
 async function getRandomMusic(){
     // Called onclick 
-
     const response = await fetch('/random-music-data');
     const data = await response.json(); // return random music metadata
     console.log(data.comments);
     document.getElementById('music-embed').src = data.url;
     document.getElementById('musicId').value = data.musicId;
     updateComments(data.comments);
+    let langSelect = document.getElementById('lang');
+    let langCode = langSelect.options[0].selected = "selected";
 }
 
 function updateComments(comments){
@@ -62,6 +63,7 @@ async function onSelectLang(idx) {
 
     const response = await fetch("/comments?"+constructQueryString(params));
     const comments = await response.json();
+    console.log(comments);
     updateComments(comments);
 }
 

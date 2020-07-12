@@ -13,7 +13,10 @@
 // limitations under the License.
 
 package com.google.sps.servlets;
+
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
@@ -23,6 +26,10 @@ import com.google.appengine.api.datastore.Query.Filter;
 import com.google.appengine.api.datastore.Query.FilterOperator;
 import com.google.appengine.api.datastore.Query.FilterPredicate;
 import com.google.appengine.api.datastore.Query.SortDirection;
+
+import com.google.cloud.translate.Translate;
+import com.google.cloud.translate.TranslateOptions;
+import com.google.cloud.translate.Translation;
 
 
 import java.io.IOException;
@@ -52,9 +59,10 @@ public class CommentsDataServlet extends HttpServlet {
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     String langCode = request.getParameter("langCode");
     String musicId = request.getParameter("musicId");
-    
+
     String json = convertListMapToJson(getCommentsByMusicId(musicId, langCode));
 
+    response.setCharacterEncoding("UTF-8");
     response.setContentType("application/json;");
     response.getWriter().println(json);
   }
@@ -89,9 +97,14 @@ public class CommentsDataServlet extends HttpServlet {
         String id = (String)result.getProperty("musicId");
         Long timestamp = (Long)result.getProperty("timestamp");
 
-        System.out.println(id + " " + timestamp + " " + content);
+        Translate translate = TranslateOptions.getDefaultInstance().getService();
+        Translation translation =
+            translate.translate(content, Translate.TranslateOption.targetLanguage(langCode));
+        String translatedContent = translation.getTranslatedText();
+
+        System.out.println(id + " " + timestamp + " " + translatedContent);
         Map<String, String> commentsData = new HashMap<String, String>();
-        commentsData.put("content", content);
+        commentsData.put("content", translatedContent);
         commentsData.put("timestamp", String.valueOf(timestamp));
         comments.add(commentsData);
     }
@@ -99,7 +112,7 @@ public class CommentsDataServlet extends HttpServlet {
   }
 
   private String convertListMapToJson(List<Map<String, String> >data){
-      Gson gson = new Gson();
+      Gson gson = new GsonBuilder().disableHtmlEscaping().create();
       String json = gson.toJson(data);
       return json;
   }
