@@ -32,55 +32,33 @@ import java.util.Map;
 
 
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
-@WebServlet("/data")
-public class DataServlet extends HttpServlet {
+@WebServlet("/comments")
+public class CommentsDataServlet extends HttpServlet {
 
-  private List<String> urls;
-  //private List<String> comments;
 
   @Override 
   public void init() {
-	  this.urls = new ArrayList<>();
-	  //this.comments = new ArrayList<>();
-	  this.urls.add("https://www.youtube.com/embed/XpqqjU7u5Yc");
-	  this.urls.add("https://www.youtube.com/embed/WPi7LrQ1rNg");
-	  this.urls.add("https://www.youtube.com/embed/EqPtz5qN7HM");
-  }
 
-  @Override
-  public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    Map<String, String> musicData = getRandomMusicData();
-    String json = convertMusicDataToJson(musicData);
-	response.setContentType("application/json;");
-    response.getWriter().println(json);
   }
 
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     String comment = request.getParameter("comment");
+    String musicId = request.getParameter("music-id");
 	long timestamp = System.currentTimeMillis();
+    
+    System.out.println(musicId);
+    System.out.println(comment);
 
 	Entity commentEntity = new Entity("Comment");
     commentEntity.setProperty("content", comment);
+    commentEntity.setProperty("musicId", musicId);
     commentEntity.setProperty("timestamp", timestamp);
+
 	DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     datastore.put(commentEntity);
 
 	response.sendRedirect("blog/index.html");
   }
 
-  private Map<String, String> getRandomMusicData() {
-    int idx = (int)(Math.random() * this.urls.size());
-    String url = this.urls.get(idx);
-    Map<String, String> musicData = new HashMap<String, String>();
-    musicData.put("id", String.valueOf(idx));
-    musicData.put("url", url);
-    return musicData;
-  }
-
-  private String convertMusicDataToJson(Map<String, String>data) {
-    Gson gson = new Gson();
-    String json = gson.toJson(data);
-    return json;
-  }
 }
