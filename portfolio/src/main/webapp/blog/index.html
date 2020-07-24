@@ -3,26 +3,45 @@
     <head>
         <meta charset="UTF-8">
         <title>Brian Chao's Blog</title>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap" rel="stylesheet">
         <script src="script.js"></script>
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
         <h1>Brian Chao's blog</h1>
         <div>
-            <iframe id="music-embed" width="420" height="315" src=""></iframe>
+            <span>Please select a language</span>
+            <select id="lang" name="lang" onchange="onSelectLang(this.selectedIndex)">
+                <option value="en" selected>English</option>
+                <option value="zh">Chinese</option>
+                <option value="ja">Japanese</option>
+                <option value="fr">French</option>
+                <option value="de">Deutsch</option>
+                <option value="es">Spanish</option>
+            </select>
         </div>
-        <div>
-            <!--For fetch single string-->
-            <button onclick="getRandomMusic()">
-                Click to see a random music video!
-            </button>
-        </div>
-        <div>
-            <form action="/data" method="POST">
-            <input type="text" placeholder="Enter comment" id="comment" name="comment">
-            <input type="submit"/>
-            </form>
-        </div>
-        <div>
+        <h2>Some Music </h2>
+            <div>
+                <iframe id="music-embed" width="420" height="315" src=""></iframe>
+            </div>
+            <div>
+                <!--For fetch single string-->
+                <button onclick="getRandomMusic()">
+                    Click to see a random music video!
+                </button>
+            </div>
+            <div>
+                <form action="/comments" method="POST">
+                    <input type="text" placeholder="Enter comment" id="comment" name="comment">
+                    <input type="hidden" id="musicId" name="musicId" />
+                    <input type="submit"/>
+                </form>
+            </div>
+
+            <div id="comments">
+
+            </div>
+        <div id="footer">
             <a href="../index.html">Back to homepage</a>
         </div>
     </body>
